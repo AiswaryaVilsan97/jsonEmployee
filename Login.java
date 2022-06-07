@@ -26,8 +26,7 @@ String password=request.getParameter("password");
 if(password.equals("1234")){
 	out.print("Hi "+name+",");  
 	out.print("successfully logged in!\n"); 
-	out.print("EMPLOYEE DATA \n"); 
-	//request.getRequestDispatcher("DatabaseAccess.java").include(request, response);  
+	out.print("EMPLOYEE DATA \n");
 
 HttpSession session=request.getSession();  
 session.setAttribute("name",name);
@@ -58,14 +57,13 @@ try {
 		jo.put("role", r.getString("role"));
 		jsonr.add(jo);
 		      }
-	
 	pw.println(jsonr);
 	JSONObject jo1 = new JSONObject();
 	jo1.put("Employee_Data", jsonr);
-     FileWriter file = new FileWriter("C:\\Users\\91965\\eclipse-workspace\\EmployeeManagementSystem\\employeeData.json");
-     file.write(jo1.toJSONString());
-     file.close();
-     System.out.println("JSON FILE FOR EMPLOYEE DATA CREATED!");
+        FileWriter file = new FileWriter("C:\\Users\\91965\\eclipse-workspace\\EmployeeManagementSystem\\employeeData.json");
+        file.write(jo1.toJSONString());
+     	file.close();	
+	System.out.println("JSON FILE FOR EMPLOYEE DATA CREATED!");
 }
 catch (Exception e) {
 	e.printStackTrace();
@@ -84,16 +82,11 @@ finally {
 		        s = null;
 		    }
 		}}
-
 else {out.print("You ar not logged in");}
-
 }
-
-
 else{  
 out.print("sorry, username or password error!");  
 request.getRequestDispatcher("login.html").include(request, response);  
 }  
-
 out.close();  
 }}  
