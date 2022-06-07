@@ -70,7 +70,20 @@ try {
 catch (Exception e) {
 	e.printStackTrace();
     out.close();  
-}}
+}
+finally {
+	try {
+		if(c != null)
+		 c.close();
+		 if(s != null){
+		 s.close();
+		 } catch(SQLException sqlee) {
+		        sqlee.printStackTrace();
+		    } finally { 
+		        c = null;
+		        s = null;
+		    }
+		}}
 
 else {out.print("You ar not logged in");}
 
